@@ -3,7 +3,6 @@
     export let num = 0;
     export let value = "";
 	const dispatch = createEventDispatcher();
-
 	const plus = () => num += 1;
     const minus = () =>  num = num > 0 ? num - 1: num;
 	const clear  = () => num = 0;
