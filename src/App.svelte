@@ -1,27 +1,31 @@
 <script>
 	import Counter from './Counter.svelte';
-	import { counters } from "./store.js"
+	import { CounterList } from "./store.js"
 	function add_counter() {
-		$counters = [...$counters, {title: "new",count: 0, status: false}]
+		$CounterList = [...$CounterList, {title: "new",num: 0, status: false}]
 	}
-	$: sum = $counters.map(item => item.count).reduce((a, b) => {
+	$: $CounterList = $CounterList.filter(item => !(item.deleted == true));
+	$: sum = !$CounterList.length ? 0: $CounterList.map(counter => counter.num).reduce((a, b) => {
 		return a + b;
 	});
-	$: titles = $counters.map(item => item.title).join(' , ');
-
+	$: titles = $CounterList.map(counter => counter.title).join(' , ');
+	
 </script>
 
 <main>
+	<h2>Multiple Counter</h2>
+	{#if $CounterList.length}
 	<div class="all_counter">
-		{#each $counters as counter}
-			<Counter bind:value={counter.title} bind:num={counter.count}/>
+		{#each $CounterList as counter}
+			<Counter bind:title={counter.title} bind:num={counter.num} bind:deleted={counter.deleted}/>
 		{/each}
 	</div>
+	{/if}
 	<button on:click={add_counter}>
 		add_counter
 	</button>
-	<div>title list:{titles}</div>
-	<div>num of sum:{sum}</div>
+	<div>title list : {titles}</div>
+	<div>num of sum : {sum}</div>
 </main>
 
 <style>
@@ -30,5 +34,8 @@
 		padding: 1em;
 		max-width: 400px;
 		margin: 0 auto;
+	}
+	button {
+		width:100%;
 	}
 </style>

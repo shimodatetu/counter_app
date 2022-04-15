@@ -1,6 +1,7 @@
 import { writable } from "svelte/store"
 
-export const counters = writable([
-    {title:'new', count:0},
-    {title:'new', count:0}
+export const CounterList = writable([
+    {title:'new', num:0, deleted:false},
+    {title:'new', num:0, deleted:false}
 ])
+
