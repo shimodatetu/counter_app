@@ -20,15 +20,15 @@
 	<button on:click={add_counter}>
 		add_counter
 	</button>
-	<div>{titles}</div>
-	<div>{sum}</div>
+	<div>title list:{titles}</div>
+	<div>num of sum:{sum}</div>
 </main>
 
 <style>
 	main {
 		text-align: center;
 		padding: 1em;
-		max-width: 240px;
+		max-width: 400px;
 		margin: 0 auto;
 	}
 </style>

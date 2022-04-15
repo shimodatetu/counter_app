@@ -14,7 +14,7 @@
     {num}
 	<button on:click={plus}>+</button>
     <button disabled={!num} on:click={minus}>-</button>
-	<button disabled={!num} on:click={clear}>clear</button>
+	<button disabled={!num} on:click={clear}>0</button>
 </div>
 
 <style>
